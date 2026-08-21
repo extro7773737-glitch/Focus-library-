@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Focus Library | Your Space to Focus</title>
+
+  <meta name="description"
+        content="Focus Library — a peaceful, silent and comfortable study space for students.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f8f6;
+      color: #17221b;
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      border-bottom: 1px solid #e5e8e5;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      color: #174d32;
+    }
+
+    .logo span {
+      color: #8a6a2f;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #26352c;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #174d32;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 70px 7%;
+      background:
+        linear-gradient(rgba(14,42,28,0.78), rgba(14,42,28,0.78)),
+        radial-gradient(circle at center, #6f927c, #173b29);
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 8vw, 82px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      color: #e4c77b;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 650px;
+      margin: 0 auto 35px;
+      color: #edf4ef;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 27px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: #d6b765;
+      color: #17221b;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: #174d32;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+      color: #174d32;
+    }
+
+    .section-title p {
+      color: #647067;
+    }
+
+    /* ABOUT */
+    .about {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about p {
+      font-size: 18px;
+      color: #536158;
+    }
+
+    /* FACILITIES */
+    .facilities {
+      background: #eef3ef;
+    }
+
+    .facility-grid {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .facility-card {
+      background: white;
+      padding: 30px 22px;
+      text-align: center;
+      border-radius: 14px;
+      border: 1px solid #e0e6e1;
+      transition: 0.25s;
+    }
+
+    .facility-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .facility-card h3 {
+      color: #174d32;
+      margin-bottom: 8px;
+    }
+
+    .facility-card p {
+      color: #68736c;
+    }
+
+    /* WHY US */
+    .why {
+      max-width: 1050px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .why-text h2 {
+      font-size: 40px;
+      color: #174d32;
+      margin-bottom: 18px;
+    }
+
+    .why-text p {
+      color: #5d685f;
+      margin-bottom: 20px;
+    }
+
+    .points {
+      list-style: none;
+    }
+
+    .points li {
+      margin: 12px 0;
+      font-weight: 600;
+    }
+
+    .points li::before {
+      content: "✓";
+      color: #174d32;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .quote-box {
+      background: #174d32;
+      color: white;
+      border-radius: 20px;
+      padding: 45px 35px;
+      text-align: center;
+    }
+
+    .quote-box .big {
+      font-size: 55px;
+      color: #e4c77b;
+    }
+
+    .quote-box h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: #f0f3ef;
+    }
+
+    .contact-box {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 18px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid #e0e5e0;
+    }
+
+    .contact-box p {
+      margin: 12px 0;
+      color: #5d685f;
+      font-size: 17px;
+    }
+
+    .contact-buttons {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #10271b;
+      color: white;
+      text-align: center;
+      padding: 30px 7%;
+    }
+
+    footer h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      color: #c5d0c8;
+      font-size: 14px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+      nav {
+        padding: 16px 5%;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        min-height: 82vh;
+        padding: 60px 5%;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      section {
+        padding: 65px 5%;
+      }
+
+      .facility-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why {
+        grid-template-columns: 1fr;
+      }
+
+      .why-text h2 {
+        font-size: 32px;
+      }
+
+      .contact-box {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">Focus <span>Library</span></div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#facilities">Facilities</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+      <h1>Focus. Study.<br><span>Achieve.</span></h1>
+
+      <p>
+        Welcome to Focus Library — a peaceful and comfortable
+        place designed to help students study with complete focus.
+      </p>
+
+      <div class="buttons">
+        <a href="#facilities" class="btn btn-primary">
+          Explore Facilities
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+          Contact Us
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-title">
+      <h2>About Focus Library</h2>
+      <p>Your dedicated space for focused learning.</p>
+    </div>
+
+    <div class="about">
+      <p>
+        Focus Library provides students with a calm, silent and
+        comfortable study environment. Our goal is simple —
+        give you a place where you can concentrate on your studies
+        without unnecessary distractions.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- FACILITIES -->
+  <section class="facilities" id="facilities">
+
+    <div class="section-title">
+      <h2>Our Facilities</h2>
+      <p>Everything you need for a comfortable study session.</p>
+    </div>
+
+    <div class="facility-grid">
+
+      <div class="facility-card">
+        <div class="icon">📶</div>
+        <h3>24-Hour Wi-Fi</h3>
+        <p>Stay connected whenever you need online study resources.</p>
+      </div>
+
+      <div class="facility-card">
+        <div class="icon">💧</div>
+        <h3>RO Filtered Water</h3>
+        <p>Clean and filtered drinking water available for students.</p>
+      </div>
+
+      <div class="facility-card">
+        <div class="icon">❄️</div>
+        <h3>Chilled Water</h3>
+        <p>Refreshing chilled drinking water for your convenience.</p>
+      </div>
+
+      <div class="facility-card">
+        <div class="icon">🚻</div>
+        <h3>Separate Washrooms</h3>
+        <p>Separate washroom facilities for boys and girls.</p>
+      </div>
+
+      <div class="facility-card">
+        <div class="icon">🧹</div>
+        <h3>Neat & Clean</h3>
+        <p>A clean and well-maintained environment for studying.</p>
+      </div>
+
+      <div class="facility-card">
+        <div class="icon">🤫</div>
+        <h3>Peaceful Environment</h3>
+        <p>A quiet atmosphere where you can focus on your goals.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- WHY FOCUS -->
+  <section>
+
+    <div class="why">
+
+      <div class="why-text">
+        <h2>Why Choose Focus Library?</h2>
+
+        <p>
+          Your surroundings can make a big difference to your
+          concentration. Focus Library is designed to provide
+          students with a dedicated environment for productive study.
+        </p>
+
+        <ul class="points">
+          <li>Silent and peaceful study environment</li>
+          <li>Student-friendly facilities</li>
+          <li>Clean and comfortable surroundings</li>
+          <li>24-hour Wi-Fi</li>
+          <li>Separate washrooms</li>
+        </ul>
+      </div>
+
+      <div class="quote-box">
+        <div class="big">“</div>
+
+        <h3>Stay Focused</h3>
+
+        <p>
+          Create your own study routine, stay consistent,
+          and work towards your goals.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+
+    <div class="section-title">
+      <h2>Visit Focus Library</h2>
+      <p>Ready to create your perfect study routine?</p>
+    </div>
+
+    <div class="contact-box">
+
+      <!-- Replace these details with your real information -->
+
+      <p>📍 <strong>Location:</strong> Your Library Address</p>
+
+      <p>📞 <strong>Phone:</strong> Your Phone Number</p>
+
+      <p>🕐 <strong>Opening Hours:</strong> Add Your Timings</p>
+
+      <div class="contact-buttons">
+
+        <a href="tel:YOUR_PHONE_NUMBER"
+           class="btn btn-primary">
+          Call Us
+        </a>
+
+        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+           class="btn btn-outline"
+           style="background:#174d32;">
+          WhatsApp Us
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <h3>Focus Library</h3>
+
+    <p>
+      A peaceful place to study, focus and achieve.
+    </p>
+
+    <p style="margin-top:12px;">
+      © 2026 Focus Library. All Rights Reserved.
+    </p>
+
+  </footer>
+
+</body>
+</html>
